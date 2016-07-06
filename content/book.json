@@ -1,3 +1,13 @@
 {
-    "plugins": ["katex", "bibtex-citation"]
+    "plugins": ["katex", "bibtex-citation", "ga"],
+    "pluginsConfig": {
+      "ga": {
+        "token": "UA-80361243-1",
+        "configuration":{
+          "anonymizeIp":true,
+          "storage":"none",
+          "forceSSL":true
+        }
+      }
+    }
 }
