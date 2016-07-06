@@ -1,0 +1,3 @@
+# Bibliography
+
+{% references %} {% endreferences %}
