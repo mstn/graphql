@@ -1,6 +1,10 @@
 # Changelog
 
 ## NEXT
+* ...
+
+## Version 0.1.0
+* *(Released Wed, 6 July 2016)*
 * syntax, types and execution semantics for a simplified version of GraphQL
 * meta-information about the project: licenses, changelog, readme and disclaimer
 * integration with KaTex and deduction trees in css
