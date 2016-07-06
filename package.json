@@ -4,6 +4,9 @@
   "description": "personal notes about graphql",
   "main": "index.js",
   "scripts": {
+    "start":"gitbook serve ./content",
+    "build":"gitbook build ./content ./dist",
+    "deploy": "sh ./bin/push-to-gh-pages.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
