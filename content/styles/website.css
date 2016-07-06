@@ -1,0 +1,25 @@
+/*
+ * from http://stackoverflow.com/questions/16212364/how-do-i-display-a-proof-tree-with-html-css-and-or-javascript
+ */
+
+table.deduction-tree {
+  width: 0 !important;
+}
+
+.deduction-tree tr {
+  background-color: white !important;
+  border-top: 0 !important;
+}
+
+.deduction-tree td {
+ text-align:center !important;
+ height: 1em !important;
+ vertical-align:bottom !important;
+ border: 0 !important;
+}
+.deduction-tree td.conc {
+ border-top: solid 1px !important;
+}
+.deduction-tree div.rulename {
+ margin-top:-2em !important;
+}
