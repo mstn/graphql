@@ -1,25 +1,29 @@
 # Summary
 
-* [Introduction](introduction.md)
-* [Planning](planning.md)
+* [Changelog](CHANGELOG.md)
 
-* Part I - Abstract GraphQL
-  * [Data model](data-model.md)
-  * [Queries](queries.md)
-  * [Types](types.md)
-  * [Validation](validation.md)
-  * [Execution Semantics](execution-semantics.md)
-  * [Fragments](fragments.md)
-  * [Alias](alias.md)
-  * [Introspection](introspection,md)
-  * [Mutations](mutations.md)
-  * [Interfaces and Unions](interfaces-and-unions.md)
-  * [Error handling](error-handling.md)
+* [Part I - Abstract GraphQL](abstract/README.md)
+  * [Syntax](abstract/syntax.md)
+  * [Typing](abstract/typing.md)
+  * [Execution](abstract/execution.md)
+  * [Examples](abstract/examples.md)
+  * [Limit cases](abstract/limit-examples.md)
+  * [Safety](abstract/safety.md)
+  * [Other properties](abstract/more.md)
 
 * Part II - Extensions
+  * [Holes with types](holes.md)
+  * [Pattern matching](pattern-matching.md)
   * [Recursion](recursion.md)
   * [Restructuring](restructuring.md)
   * [Infinite graphs](infinite.md)
+  * [Polymorphims](polymorphism.md)
+  * [Resources](/)
+
+* Part III - Comparison with other query languages
+  * [TQL](tql.md)
+  * [MQL](mql.md)
+  * [Sparql](sparql.md)
 
 * [Disclaimer](DISCLAIMER.md)
 * [Contributing](CONTRIBUTING.md)

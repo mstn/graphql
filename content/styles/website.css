@@ -4,6 +4,7 @@
 
 table.deduction-tree {
   width: 0 !important;
+  font-size: 12px !important;
 }
 
 .deduction-tree tr {
