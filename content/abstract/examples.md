@@ -211,22 +211,7 @@ The execution steps are the following.
     </td></tr>
 </table>
 
-**2. context nesting**
-<table class="deduction-tree">
-    <tr>
-        <td>
-          $$ \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \mathit{john} \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street}) \to (\mathit{john} \triangleright \mathbf{name}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
-        </td>
-        <td class="rulename" rowspan="2">
-          <div class="rulename"></div>
-        </td>
-    </tr>
-    <tr><td class="conc">
-      $$ \Sigma, 0 \vdash \mathbf{user}(\mathbf{id}: 1). \mathit{john} \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street})  \to \mathbf{user}(\mathbf{id}: 1). (\mathit{john} \triangleright \mathbf{name}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
-    </td></tr>
-</table>
-
-**3. nesting +  set + new ctx + application**
+**2. nesting+new context+set+application**
 <table class="deduction-tree">
     <tr>
         <td>
@@ -239,14 +224,14 @@ The execution steps are the following.
                               <table class="deduction-tree">
                                   <tr>
                                       <td>
-                                       $$ \rho_{\mathbf{name}}(\mathit{john}) = \mathit{"John"}$$
+                                        $$ \rho_{\mathbf{name}}(\mathit{john}) = \mathit{"John"}$$
                                       </td>
                                       <td class="rulename" rowspan="2">
                                         <div class="rulename"></div>
                                       </td>
                                   </tr>
                                   <tr><td class="conc">
-                                    $$\pi_{\mathbf{user}}(\Sigma), \mathit{john} \vdash \mathbf{name} \to \mathbf{name}. \mathit{"John"} \triangleright [\cdot]$$
+                                    $$ \pi_{\mathbf{user}(\Sigma)}, \mathit{john} \vdash  \mathbf{name} \to \mathbf{name}. \mathit{"John"} \triangleright [\cdot]$$
                                   </td></tr>
                               </table>
                             </td>
@@ -255,7 +240,7 @@ The execution steps are the following.
                             </td>
                         </tr>
                         <tr><td class="conc">
-                          $$\pi_{\mathbf{user}}(\Sigma), 0 \vdash \mathit{john} \triangleright \mathbf{name} \to \mathbf{name}. \mathit{"John"} \triangleright [\cdot]$$
+                          $$ \pi_{\mathbf{user}(\Sigma)}, \mathit{john} \vdash  (\mathbf{name}, \mathbf{addr}.\mathbf{street}) \to (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street})$$
                         </td></tr>
                     </table>
                   </td>
@@ -264,7 +249,7 @@ The execution steps are the following.
                   </td>
               </tr>
               <tr><td class="conc">
-                $$ \pi_{\mathbf{user}}(\Sigma), 0 \vdash (\mathit{john} \triangleright \mathbf{name}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street}) \to (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
+                $$ \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \mathit{john} \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street}) \to \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street})$$
               </td></tr>
           </table>
         </td>
@@ -273,11 +258,11 @@ The execution steps are the following.
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, 0 \vdash \mathbf{user}(\mathbf{id}: 1). (\mathit{john} \triangleright \mathbf{name}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street}) \to \mathbf{user}(\mathbf{id}: 1).(\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
+      $$ \Sigma, 0 \vdash \mathbf{user}(\mathbf{id}: 1). \mathit{john} \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street})  \to \mathbf{user}(\mathbf{id}: 1). \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street})$$
     </td></tr>
 </table>
 
-**4. nesting + set + nesting + hole**
+**3. nesting+new context+set+nesting+new context+hole**
 <table class="deduction-tree">
     <tr>
         <td>
@@ -290,14 +275,27 @@ The execution steps are the following.
                               <table class="deduction-tree">
                                   <tr>
                                       <td>
-                                       $$ \mathit{"John"}: \mathit{String} =  \pi_{\mathbf{name}}\pi_{\mathbf{user}}(\Sigma)$$
+
+                                        <table class="deduction-tree">
+                                            <tr>
+                                                <td>
+                                                  $$ \pi_{\mathbf{name}} \pi_{\mathbf{user}(\Sigma)}, \mathit{"John"} \vdash  [\cdot] \to  \mathit{"John"}$$
+                                                </td>
+                                                <td class="rulename" rowspan="2">
+                                                  <div class="rulename"></div>
+                                                </td>
+                                            </tr>
+                                            <tr><td class="conc">
+                                              $$ \pi_{\mathbf{name}} \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \mathit{"John"} \triangleright [\cdot] \to  \mathit{"John"}$$
+                                            </td></tr>
+                                        </table>
                                       </td>
                                       <td class="rulename" rowspan="2">
                                         <div class="rulename"></div>
                                       </td>
                                   </tr>
                                   <tr><td class="conc">
-                                    $$\pi_{\mathbf{name}}\pi_{\mathbf{user}}(\Sigma), 0 \vdash \mathit{"John"} \triangleright [\cdot] \to \mathit{"John"}$$
+                                    $$ \pi_{\mathbf{user}(\Sigma)}, \mathit{john} \vdash  \mathbf{name}. \mathit{"John"} \triangleright [\cdot] \to \mathbf{name}. \mathit{"John"}$$
                                   </td></tr>
                               </table>
                             </td>
@@ -306,7 +304,7 @@ The execution steps are the following.
                             </td>
                         </tr>
                         <tr><td class="conc">
-                          $$\pi_{\mathbf{user}}(\Sigma), 0 \vdash \mathbf{name}. \mathit{"John"} \triangleright [\cdot] \to \mathbf{name}. \mathit{"John"} $$
+                          $$ \pi_{\mathbf{user}(\Sigma)}, \mathit{john} \vdash  (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street}) \to (\mathbf{name}. \mathit{"John"}, \mathbf{addr}.\mathbf{street}) $$
                         </td></tr>
                     </table>
                   </td>
@@ -315,7 +313,7 @@ The execution steps are the following.
                   </td>
               </tr>
               <tr><td class="conc">
-                $$ \pi_{\mathbf{user}}(\Sigma), 0 \vdash (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathit{john} \triangleright \mathbf{addr}.\mathbf{street}) \to (\mathbf{name}. \mathit{"John"}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
+                $$ \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street}) \to \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"}, \mathbf{addr}.\mathbf{street} $$
               </td></tr>
           </table>
         </td>
@@ -324,8 +322,8 @@ The execution steps are the following.
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, 0 \vdash \mathbf{user}(\mathbf{id}: 1).(\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathit{john} \triangleright \mathbf{addr}.\mathbf{street}) \to \mathbf{user}(\mathbf{id}: 1).(\mathbf{name}. \mathit{"John"}, \mathit{john} \triangleright \mathbf{addr}.\mathbf{street})$$
+      $$ \Sigma, 0 \vdash \mathbf{user}(\mathbf{id}: 1). \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street}) \to \mathbf{user}(\mathbf{id}: 1). \mathit{john} \triangleright (\mathbf{name}. \mathit{"John"} , \mathbf{addr}.\mathbf{street})$$
     </td></tr>
 </table>
 
-The evaluation steps for the remaining parts are analogous and left as exercise.
+The evaluation steps for the $$\mathbf{addr}$$ subtree are analogous and left as exercise. Finally, when the part on the right of $$\triangleright$$ is a value, we apply the skip rule.

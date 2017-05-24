@@ -184,25 +184,6 @@ Otherwise, if the term is not a value, we evaluate the term in a new context.
     </td></tr>
 </table>
 
-Then, we can propagate contexts down to the hierarchy formed by selection sets.
-
-**context nesting**
-
-<table class="deduction-tree">
-    <tr>
-        <td>
-        </td>
-        <td class="rulename" rowspan="2">
-          <div class="rulename"></div>
-        </td>
-    </tr>
-    <tr><td class="conc">
-      $$ \Sigma, u \vdash (t^{i=1 \ldots n}) \to  (u \triangleright t^{i=1 \ldots n})$$
-    </td></tr>
-</table>
-
-Here, $$\triangleright$$ is introduced on the right hand side of the arrow. In addition, we could apply the same rules several times, on the contrary of the application case, where another context is created. Hence, at some point of the execution, we could have terms of this form $$ v \triangleright v \triangleright \ldots \triangleright t$$. However, the only reduction we can apply is context creation and, eventually, we will apply a $$u \vdash t$$.
-
 ### Sets
 
 **set**
