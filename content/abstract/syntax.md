@@ -45,7 +45,7 @@ t &=& 0                                     \\
   & & \mathbf{true}                           \\
   & & \mathbf{false} \\
   & & [ \cdot ]  \\
-  & & m( x: t \ldots).t                      \\
+  & & m( x: v \ldots).t                      \\
   & & m_{( x: v \ldots)}.t                      \\
   & & \langle T \rangle.t                    \\
   & & v \triangleright t                \\

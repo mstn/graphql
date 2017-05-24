@@ -83,22 +83,6 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
     </td></tr>
 </table>
 
-**argument evaluation**
-
-<table class="deduction-tree">
-    <tr>
-        <td>
-          $$\Sigma, u \vdash t_{1} \to t'_{1}$$
-        </td>
-        <td class="rulename" rowspan="2">
-          <div class="rulename"></div>
-        </td>
-    </tr>
-    <tr><td class="conc">
-      $$ u \vdash m(x: t_{1}).t_{2} \to m(x: t'_{1}).t_{2} $$
-    </td></tr>
-</table>
-
 **nesting**
 
 <table class="deduction-tree">
