@@ -72,14 +72,14 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 <table class="deduction-tree">
     <tr>
         <td>
-          $$\rho_m \in \Sigma_{\rho}$$ and $$\rho_{m}(u, x:v)= v'$$
+          $$\Sigma' = \pi_m \Sigma$$ and $$\rho_m \in \Sigma_{\rho}$$ and $$\rho_{m}(u, x:v)= v'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash m(x: v).t \to m_{(x: v)}. v' \triangleright t $$
+      $$ \Sigma, u \vdash m(x: v).t \to m_{(x: v)}. \Sigma', v' \triangleright t $$
     </td></tr>
 </table>
 
@@ -88,7 +88,7 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 <table class="deduction-tree">
     <tr>
         <td>
-          $$\pi_{m}(\Sigma), 0 \vdash t \to t'$$
+          $$\bot, 0 \vdash t \to t'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -157,16 +157,18 @@ Otherwise, if the term is not a value, we evaluate the term in a new context.
 <table class="deduction-tree">
     <tr>
         <td>
-          $$\Sigma, v \vdash t \to t'$$
+          $$\Sigma', v \vdash t \to t'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash v \triangleright t \to  t'$$
+      $$ \Sigma, u \vdash \Sigma', v \triangleright t \to  t'$$
     </td></tr>
 </table>
+
+Do we really need context? We could rub it out. For example, we could add the evaluation step in a new context as premise of the app rule. The reason why I prefer to have two distinct rules is that, in this way, each evaluation step calls at most one resolver. In general, application could be expensive and one may want to return partial results to the client as soon as they are ready.
 
 ### Sets
 

@@ -75,14 +75,14 @@ Similar for strings, booleans and other scalars.
 <table class="deduction-tree">
     <tr>
         <td>
-        $$\Gamma \vdash t: T$$
+        $$\Gamma \vdash t: T$$ and $$v \leq \Sigma \leq T$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$\Gamma \vdash  v \triangleright t: T$$
+      $$\Gamma \vdash  \Sigma, v \triangleright t: T$$
     </td></tr>
 </table>
 

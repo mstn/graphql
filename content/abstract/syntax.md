@@ -48,7 +48,7 @@ t &=& 0                                     \\
   & & m( x: v \ldots).t                      \\
   & & m_{( x: v \ldots)}.t                      \\
   & & \langle T \rangle.t                    \\
-  & & v \triangleright t                \\
+  & & \Sigma, v \triangleright t                \\
   & & (t^{i=1 \ldots n})                  \\
 \end{aligned}
 $$
@@ -79,7 +79,7 @@ We distinguish fields from already executed fields. If $$m(x:t).t'$$ is a field,
 
 Inline fragments are denoted as $$\langle T \rangle.t$$. Roughly speaking, $$T$$ is the type condition and $$t$$ the selection set.
 
-Context $$v \triangleright t$$ is a term that propagates a new root value through a term $$t$$. In other words, $$v$$ becomes the new root to use for the evaluation of term $$t$$.
+Context $$\Sigma, v \triangleright t$$ is a term that propagates a new context through a term $$t$$. In other words, $$\Sigma, v$$ becomes the new context to use for the evaluation of term $$t$$.
 
 Finally, $$(t^{i=1 \ldots n})$$ are simply finite set of terms. In GraphQL terminology they correspond to selection sets.
 
