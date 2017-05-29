@@ -133,6 +133,19 @@ Similar for strings, booleans and other scalars.
 <table class="deduction-tree">
     <tr>
         <td>
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ (T) \leq T$$
+    </td></tr>
+</table>
+
+<table class="deduction-tree">
+    <tr>
+        <td>
           $$U_1 \leq T_1$$ &nbsp;&nbsp;&nbsp; $$T_2 \leq U_2$$
         </td>
         <td class="rulename" rowspan="2">
