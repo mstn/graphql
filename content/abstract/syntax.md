@@ -182,21 +182,23 @@ $$\begin{array}{lll}
 
 Now we define the resolve function $$\rho$$. For scalar types, the resolve function is a projection on the name of the field. Then, we need to define a resolve function for $$\mathbf{bestie}$$ and  $$\mathbf{hero}$$. The pseudo code below is a simplified version of the Facebook example.
 
-     function bestie(root, params){
-       function findCharacter(id){
-         return  findOneSQL(Humans, {id:id}) || findOneSQL(Droids, {id:id});
-       }
-       return findCharacter(root.bestie);
-     }
+```js
+function bestie(root, params){
+ function findCharacter(id){
+   return  findOneSQL(Humans, {id:id}) || findOneSQL(Droids, {id:id});
+ }
+ return findCharacter(root.bestie);
+}
 
-     function hero(root, params){
-       var episode = params.e;
-       switch(episode){
-         case 5:
-          // return Luke
-          return findOneSQL(Humans, {id:1000});
-         default:
-          // otherwise
-          return findOneSQL(Droids, {id:2001});
-       }
-     }
+function hero(root, params){
+ var episode = params.e;
+ switch(episode){
+   case 5:
+    // return Luke
+    return findOneSQL(Humans, {id:1000});
+   default:
+    // otherwise
+    return findOneSQL(Droids, {id:2001});
+ }
+}
+```
