@@ -29,7 +29,12 @@ A field is $$m( x: T \ldots).T' $$. We assume that a function $$\rho_{m}$$ exist
 
 Intuitively, the resolve function is the execution semantics of a query. GraphQL is independent from the underlying database. For this reason, we do not specify how $$\rho_{m}$$ is implemented. For scalar types, $$\rho_{m}$$ is often defined as a projection function $$\pi_{m}$$.
 
-$$T+T$$ is the sum type (aka disjoint union).
+$$T+T$$ is the sum type (aka disjoint union). I am assuming that GraphQL union is actually a disjoint union. As far I know, there is no claim about the kind of union, but there are some hints from the reference implementation.
+* Union type is required to provide _resolveType_ function or the two addends must define _isTypeOf_ function. This is a sort of "tag" on values.
+* If a value has both the addends as type (i.e. isTypeOf is true), only one is taken.
+* On the contrary of interfaces, fragments are required when output is a union. If union were not disjoint, the type system could infer the fields in the intersection of the field sets of the two addends.
+
+Hence, we model GraphQL union as a disjoint union following {{ "pierce02" | cite}} as usual. In passing, it would be interesting to implement a non disjoint union as a possible extension of the language.
 
 Finally, $$x$$ is a type variable. As usual, typing rules will be defined in a context $$\Gamma$$ where variable names are resolved to a type.
 
@@ -50,6 +55,8 @@ t &=& 0                                     \\
   & & \langle T \rangle.t                    \\
   & & \Sigma, v \triangleright t                \\
   & & (t^{i=1 \ldots n})                  \\
+  & & \mathit{inl} \, t \\
+  & & \mathit{inr} \, t \\
 \end{aligned}
 $$
 
@@ -63,7 +70,9 @@ v &=& 0                                     \\
   & & \mathbf{true}     \\
   & & \mathbf{false} \\
   & & m_{( x: v \ldots)}.v                      \\
-  & & (v^{i=1 \ldots n})
+  & & (v^{i=1 \ldots n}) \\
+  & & \mathit{inl} \, v \\
+  & & \mathit{inr} \, v \\
 \end{aligned}
 $$
 
@@ -73,7 +82,7 @@ $$0$$ is the empty query whose result is the emptyset. Then, $$\mathbf{n}$$ for 
 
 Hole $$[ \cdot ]$$ is a term with a hole in it. The function of a hole is to capture the current root value during evaluation. Its role will be clear when we discuss the operational semantics of the language.
 
-A field $$m(x:t).t'$$ is a sort of procedure call $$m$$ on a given dataset and returns a value with a compatible structure. If $$t'$$ is a hole $$[\cdot]$$ we write $$m( x: t \ldots)$$ instead of $$m( x: t \ldots).[]$$.
+A field $$m(x:t).t'$$ is a sort of procedure call $$m$$ on a given dataset and returns a value with a compatible structure. If $$t'$$ is a hole $$[\cdot]$$ we write $$m( x: t \ldots)$$ instead of $$m( x: t \ldots).[\cdot]$$.
 
 We distinguish fields from already executed fields. If $$m(x:t).t'$$ is a field, then after execution is denoted $$m_{(x:v)}.t'$$. The reason is technical. Since we want values to be normal terms (i.e. no execution step can be applied), we need to distinguish the two cases. In addition, we keep the information on the value of the parameters at execution time, because we can have multiple calls to a field with different arguments in the same query. In the real world, GraphQL does not allow this kind of queries because it cannot resolve the ambiguity if the information on argument values is lost.
 

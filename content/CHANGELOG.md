@@ -2,10 +2,11 @@
 
 ### Next
 
-* I am focussing on the definition of an abstract syntax for GraphQL. I rewrote the initial proposal I wrote almost a year ago following an approach closer to {{ "pierce02" | cite}} with a _small step_ semantics style.
-* Syntax and semantics are not definitive and, currently, there are some design flaws in my own definitions. I am testing different options while, at the same time, I am trying to reverse engineer the semantics of the real GraphQL [here](https://github.com/mstn/graphql-playground).
-* My goal is to reach a version where safety property holds.
-* I am working on a subset of the language without fragments and unions.
+* Sketched safety proof.
+* Fragments and disjoint unions.
+* Definition of an abstract syntax for GraphQL with a _small step_ semantics style following {{ "pierce02" | cite}}.
+* Tests for reverse engineering the semantics of the real GraphQL [here](https://github.com/mstn/graphql-playground).
+*  Syntax and semantics are not definitive and, currently, there are some flaws in my own definitions.
 
 ### Release 0.1.0
 

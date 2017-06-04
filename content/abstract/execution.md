@@ -32,7 +32,7 @@ Actually, GraphQL does not allow to create empty schemas.
 <table class="deduction-tree">
     <tr>
         <td>
-        $$ u \leq \Sigma_T $$
+        $$ u: \Sigma_T $$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -101,33 +101,90 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 
 ### Fragments
 
-> Not considered for now
+Fragments yield new evaluation contexts. Basically, they behave as ascriptions (i.e. upcasting and "safe" downcasting).
 
 <table class="deduction-tree">
     <tr>
         <td>
-          $$u \leq T$$
+          $$u: T$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ u \vdash \langle T \rangle.t \to  t$$
+      $$ \Sigma, u \vdash \langle T \rangle.t \to  T, u \triangleright t$$
     </td></tr>
 </table>
 
+For (disjoint) unions, we distinguish several cases: if the root has type union, then the new context will be a "projection" of the union value to one of its constituents. Otherwise, if the type condition is a union, the root value is "injected" into a union value.
+
 <table class="deduction-tree">
     <tr>
         <td>
-          $$u \nleq T$$
+          $$u = \mathit{inl} \, v: T+U$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ u \vdash \langle T \rangle.t \to  0$$
+      $$ \Sigma, u \vdash \langle T \rangle.t \to  T, v \triangleright t$$
+    </td></tr>
+</table>
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$u = \mathit{inr} \, v: U+T$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash \langle T \rangle.t \to  T, v \triangleright t$$
+    </td></tr>
+</table>
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$u: T$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash \langle T+U \rangle.t \to  T+U,  \mathit{inl} \, u \triangleright t$$
+    </td></tr>
+</table>
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$u: T$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash \langle U+T \rangle.t \to  U+T,  \mathit{inr} \, u \triangleright t$$
+    </td></tr>
+</table>
+
+The following is a catch-all rule whose premise is the negation of the union of the previous conditions.
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          otherwise
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash \langle T \rangle.t \to  0$$
     </td></tr>
 </table>
 
@@ -184,6 +241,37 @@ Do we really need context? We could rub it out. For example, we could add the ev
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash (t^{i=1 \ldots j-1}t_jt^{k=j+1 \ldots n}) \to  (t^{i=1 \ldots j-1}t'_jt^{k=j+1 \ldots n})$$
+      $$ \Sigma, u \vdash (t^{i=1 \ldots j-1}t_jt^{k=j+1 \ldots n}) \to  (t^{i=1 \ldots j-1}t'_{j}t^{k=j+1 \ldots n})$$
+    </td></tr>
+</table>
+
+### Union
+
+The usual suspects.
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$T, v \vdash t \to t'$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ T+U, \mathit{inl}\,v \vdash \mathit{inl}\,t \to  \mathit{inl}\,t'$$
+    </td></tr>
+</table>
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$U, v \vdash t \to t'$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ T+U, \mathit{inr}\,v \vdash \mathit{inr}\,t \to  \mathit{inr}\,t'$$
     </td></tr>
 </table>

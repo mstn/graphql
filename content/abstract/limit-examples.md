@@ -30,8 +30,6 @@ The case of a query made of a scalar value, say $$42$$, is legit. Those queries 
 
 Since $$[\cdot]: \top$$, it can be executed against any schema $$T$$. However, $$[\cdot]$$ cannot be exploited by hackers for DoS attacks (e.g. query all the dataset). In fact, it will always return the root value, that is, usually $$0$$. This makes sense with the intuition behind the hole construct. Hole is a way to peep the current state of the execution. If no actual query has been performed, we do not have any data.
 
-The hole rule has as condition $$u \leq \Sigma_T$$. We can be even more restrictive with $$u: \Sigma_T$$. However, probably, the first case is necessary when we consider union of types (but I am not sure).
-
 ### $$\top$$ and $$\bot$$ schemas
 
 Schema $$\bot$$ matches any query. The result of the execution of any query against $$\bot$$ is $$0$$. If the query is $$[\cdot]$$, we can apply two rules, namely, the box and the empty rule. In general, this is not a problem as far as the result is the same. The condition on the hole rule comes in our help.
