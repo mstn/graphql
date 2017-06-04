@@ -4,10 +4,14 @@
 
 * [Part I - Abstract GraphQL](abstract/README.md)
   * [Syntax](abstract/syntax.md)
-  * [Typing](abstract/typing.md)
+  * [Typing and subtyping](abstract/typing.md)
+    * [Subtyping in sets](abstract/subtyping-in-sets.md)
+    * [Union as input](abstract/union-as-input.md)
+    * [Well-typed fragments](abstract/well-typed-fragments.md)
   * [Execution](abstract/execution.md)
-  * [Examples](abstract/examples.md)
-  * [Limit cases](abstract/limit-examples.md)
+    * [A full example](abstract/full-example.md)
+    * [Argument Evaluation](abstract/argument-eval.md)
+    * [Limit cases](abstract/limit-examples.md)
   * [Safety](abstract/safety.md)
   * [Other properties](abstract/more.md)
 

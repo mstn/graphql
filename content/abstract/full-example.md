@@ -1,4 +1,4 @@
-# More Examples
+# A full example
 
 Let us consider the following schema $$\Sigma$$:
 
