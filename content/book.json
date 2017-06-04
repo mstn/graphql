@@ -1,5 +1,5 @@
 {
-    "plugins": ["katex", "bibtex-citation", "ga"],
+    "plugins": ["katex", "bibtex-citation", "ga", "edit-link"],
     "pluginsConfig": {
       "ga": {
         "token": "UA-80361243-1",
@@ -8,6 +8,10 @@
           "storage":"none",
           "forceSSL":true
         }
+      },
+      "edit-link": {
+        "base": "https://github.com/mstn/graphql/tree/master/content",
+        "label": "Edit This Page"
       }
     }
 }
