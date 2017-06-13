@@ -88,7 +88,7 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 <table class="deduction-tree">
     <tr>
         <td>
-          $$\bot, 0 \vdash t \to t'$$
+          $$\pi_m \Sigma, 0 \vdash t \to t'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -203,7 +203,7 @@ If we apply a context to a value, we can skip the value. In other words, we igno
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash v \triangleright w \to w $$
+      $$ \Sigma, u \vdash \Sigma', v \triangleright w \to w $$
     </td></tr>
 </table>
 
@@ -221,7 +221,7 @@ Otherwise, if the term is not a value, we evaluate the term in a new context.
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash \Sigma', v \triangleright t \to  t'$$
+      $$ \Sigma, u \vdash \Sigma', v \triangleright t \to  \Sigma', v \triangleright t'$$
     </td></tr>
 </table>
 

@@ -249,7 +249,7 @@ The execution steps are the following.
                   </td>
               </tr>
               <tr><td class="conc">
-                $$ \bot, 0 \vdash  \sigma \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street}) \to \sigma \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street})$$
+                $$ \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \sigma \triangleright (\mathbf{name}, \mathbf{addr}.\mathbf{street}) \to \sigma \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street})$$
               </td></tr>
           </table>
         </td>
@@ -313,7 +313,7 @@ The execution steps are the following.
                   </td>
               </tr>
               <tr><td class="conc">
-                $$ \bot, 0 \vdash  \sigma \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street}) \to \sigma \triangleright (\mathbf{name}. \mathit{"John"}, \mathbf{addr}.\mathbf{street} $$
+                $$ \pi_{\mathbf{user}(\Sigma)}, 0 \vdash  \sigma \triangleright (\mathbf{name}. \mathit{"John"} \triangleright [\cdot], \mathbf{addr}.\mathbf{street}) \to \sigma \triangleright (\mathbf{name}. \mathit{"John"}, \mathbf{addr}.\mathbf{street} $$
               </td></tr>
           </table>
         </td>
