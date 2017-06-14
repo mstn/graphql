@@ -9,7 +9,7 @@ $$\mathit{User}, u \vdash \langle \mathit{Person} \rangle.\mathbf{name} \to \mat
 
 $$\mathit{Person}, u \vdash \langle \mathit{User} \rangle.(\mathbf{name}, \mathbf{lastLogin}) $$ has two possible derivations. If $$u$$ is not $$\mathit{User}$$, then we get $$0$$. Otherwise,  $$\mathit{User}, u \triangleright (\mathbf{name}, \mathbf{lastLogin})$$. The second case is a "safe" downcasting. It is safe because at run time we know for sure that $$u$$ is $$\mathit{User}$$.
 
-In general, fragments are applied to any schema, but well-typed fragments require that $$T \leq T'$$ and $$\Gamma \vdash t: T'$$. This condition is needed to guarantee that the subterm is evaluable in the new context.
+In general, fragments are applied to any schema, but well-typed fragments require that $$t \downarrow T$$. This condition is needed to guarantee that the subterm is evaluable in the new context.
 
 For example, in the first case, $$\mathit{Person} \leq \mathbf{name}.\top$$ and $$t: \mathbf{name}.\top$$. On the contrary, $$\langle \mathit{Person} \rangle.(\mathbf{name}, \mathbf{lastLogin})$$ would not have been well-typed since $$\mathbf{lastLogin}$$ is not a field in $$\mathit{Person}$$.
 

@@ -16,7 +16,7 @@ $$
 \mathbf{user}(\mathbf{id}: \mathit{Nat}).\mathbf{name}.\mathit{String}
 $$
 
-Hence, it is applicable to the schema defined in [our master example](./examples.md). The evaluation of the query produces this value:
+Hence, it is applicable to the schema defined in [our master example](./full-example.md). The evaluation of the query produces this value:
 
 $$
 \mathbf{user}_{(\mathbf{id}: 1)}.\mathbf{name}.\mathit{"dummy"}
@@ -37,7 +37,7 @@ Schema $$\bot$$ matches any query. The result of the execution of any query agai
 <table class="deduction-tree">
     <tr>
         <td>
-        $$ u \leq \bot $$
+        $$ u: \bot $$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -50,7 +50,7 @@ Schema $$\bot$$ matches any query. The result of the execution of any query agai
 
 Indeed, the only possible value for $$u$$ is $$0$$. If it is not, only the null rule is applicable.
 
-On the contrary the only query matching $$\top$$ is $$[\cdot]$$. The execution of $$\top, v \vdash [\cdot]$$ gives $$v$$ since $$v \leq \top$$. Intuitively, if we already know $$v$$, we cannot refine further our knowledge if the information about the datasource is the most generic.
+On the contrary the only query matching $$\top$$ is $$[\cdot]$$. The execution of $$\top, v \vdash [\cdot]$$ gives $$v$$ since $$v: \top$$. Intuitively, if we already know $$v$$, we cannot refine further our knowledge if the information about the datasource is the most generic.
 
 The same kind of reasoning can be followed for nested $$\bot$$ and $$\top$$ types. For example, this schema
 

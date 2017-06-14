@@ -2,6 +2,8 @@
 
 ## Typing rules
 
+**T-NULL**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -15,6 +17,8 @@
     </td></tr>
 </table>
 
+**T-HOLE**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -27,6 +31,8 @@
       $$ \Gamma \vdash [\cdot]: \top $$
     </td></tr>
 </table>
+
+**T-SCA**
 
 <table class="deduction-tree">
     <tr>
@@ -44,6 +50,8 @@
 
 Similar for strings, booleans and other scalars.
 
+**T-VAR**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -57,6 +65,8 @@ Similar for strings, booleans and other scalars.
       $$ \Gamma \vdash  x : T $$
     </td></tr>
 </table>
+
+**T-FLD**
 
 <table class="deduction-tree">
     <tr>
@@ -72,19 +82,25 @@ Similar for strings, booleans and other scalars.
     </td></tr>
 </table>
 
+**T-CTX**
+
 <table class="deduction-tree">
     <tr>
         <td>
-        $$\Gamma \vdash t: T$$ and $$\Gamma \vdash v: T$$
+        $$t \downarrow \Sigma_T$$ and $$\Gamma \vdash v: \Sigma_T$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$\Gamma \vdash  \Sigma, v \triangleright t: T$$
+      $$\Gamma \vdash  \Sigma, v \triangleright t: \top$$
     </td></tr>
 </table>
+
+$$\downarrow$$ is read "matches" and it is defined in next section.
+
+**T-SET**
 
 <table class="deduction-tree">
     <tr>
@@ -100,11 +116,12 @@ Similar for strings, booleans and other scalars.
     </td></tr>
 </table>
 
+**T-FRG-1**
 
 <table class="deduction-tree">
     <tr>
         <td>
-        $$T \leq T'$$ and $$\Gamma \vdash t: T'$$
+        $$t \downarrow T$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -114,6 +131,8 @@ Similar for strings, booleans and other scalars.
       $$\Gamma \vdash  \langle T \rangle.t: \top$$
     </td></tr>
 </table>
+
+**T-FRG-2**
 
 <table class="deduction-tree">
     <tr>
@@ -128,6 +147,9 @@ Similar for strings, booleans and other scalars.
       $$\Gamma \vdash  \mathit{inl}\,t: T+U$$
     </td></tr>
 </table>
+
+**T-FRG-3**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -146,6 +168,8 @@ Similar for strings, booleans and other scalars.
 
 ### Standard rules
 
+**S-RFL**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -158,6 +182,8 @@ Similar for strings, booleans and other scalars.
       $$ T \leq T$$
     </td></tr>
 </table>
+
+**S-TRA**
 
 <table class="deduction-tree">
     <tr>
@@ -172,6 +198,8 @@ Similar for strings, booleans and other scalars.
       $$ T \leq S$$
     </td></tr>
 </table>
+
+**T-SUB**
 
 <table class="deduction-tree">
     <tr>
@@ -189,6 +217,8 @@ Similar for strings, booleans and other scalars.
 
 ### Bottom and Top
 
+**S-TOP**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -201,6 +231,8 @@ Similar for strings, booleans and other scalars.
       $$ \bot \leq T$$
     </td></tr>
 </table>
+
+**S-BOT**
 
 <table class="deduction-tree">
     <tr>
@@ -217,6 +249,8 @@ Similar for strings, booleans and other scalars.
 
 ### Sets
 
+**S-SINGLETON**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -230,6 +264,7 @@ Similar for strings, booleans and other scalars.
     </td></tr>
 </table>
 
+**S-SET**
 
 <table class="deduction-tree">
     <tr>
@@ -247,6 +282,8 @@ Similar for strings, booleans and other scalars.
 
 ### Fields
 
+**S-FLD**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -262,6 +299,8 @@ Similar for strings, booleans and other scalars.
 </table>
 
 ### Union
+
+**S-SUM**
 
 We take the usual definition of subtyping for union that can be found in the literature.
 
@@ -280,13 +319,3 @@ We take the usual definition of subtyping for union that can be found in the lit
 </table>
 
 Note that $$T \nleq T+U$$ because union is disjoint!
-
-#### Shortcut notation
-
-We write $$T \leq t$$ for $$T \leq T' \wedge t:T'$$.
-
-## Queries and schemas
-
-The execution of a query $$q$$ against a datasource makes sense if it matches the schema type $$T$$ of the datasource. Formally, this means that $$T \leq q$$.
-
-The result of the execution of a query against a matching schema is a value (see next section). The type of the result is a subtype of the query as well as the schema.
