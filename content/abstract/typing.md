@@ -66,7 +66,7 @@ Similar for strings, booleans and other scalars.
     </td></tr>
 </table>
 
-**T-FLD**
+**T-FLD-1**
 
 <table class="deduction-tree">
     <tr>
@@ -79,6 +79,22 @@ Similar for strings, booleans and other scalars.
     </tr>
     <tr><td class="conc">
       $$ \Gamma \vdash  m( x: t_1 \ldots).t_2 : m(x: T_1 \ldots).T_2 $$
+    </td></tr>
+</table>
+
+**T-FLD-2**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$\Gamma \vdash v_1: T_1$$ &nbsp;&nbsp;&nbsp; $$\Gamma \vdash t_2: T_2$$
+        </td>
+        <td class="rulename" >
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Gamma \vdash  m_{( x: v_1 \ldots)}.t_2 : m(x: T_1 \ldots).T_2 $$
     </td></tr>
 </table>
 
@@ -289,7 +305,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-**S-FLD**
+**S-FLD-1**
 
 <table class="deduction-tree">
     <tr>
@@ -302,6 +318,22 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </tr>
     <tr><td class="conc">
       $$ m( x: T_1 \ldots).T_2 \leq m( x: U_1 \ldots).U_2$$
+    </td></tr>
+</table>
+
+**S-FLD-2**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$U_1 \leq T_1$$ &nbsp;&nbsp;&nbsp; $$T_2 \leq U_2$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ m( x: T_1 \ldots).T_2 \leq m_{( x: U_1 \ldots)}.U_2$$
     </td></tr>
 </table>
 
