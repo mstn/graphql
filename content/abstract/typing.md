@@ -195,6 +195,22 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
+**T-SUB**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$\Gamma \vdash t: T$$ and $$T \leq U$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Gamma \vdash t: U$$
+    </td></tr>
+</table>
+
 ## Subtyping rules
 
 **S-RFL**
@@ -225,22 +241,6 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </tr>
     <tr><td class="conc">
       $$ T \leq S$$
-    </td></tr>
-</table>
-
-**T-SUB**
-
-<table class="deduction-tree">
-    <tr>
-        <td>
-          $$\Gamma \vdash t: T$$ and $$T \leq U$$
-        </td>
-        <td class="rulename" rowspan="2">
-          <div class="rulename"></div>
-        </td>
-    </tr>
-    <tr><td class="conc">
-      $$ \Gamma \vdash t: U$$
     </td></tr>
 </table>
 
