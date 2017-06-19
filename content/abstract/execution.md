@@ -336,7 +336,7 @@ The usual suspects.
     </td></tr>
 </table>
 
-**E-PAR-2**
+**E-SUM-2**
 
 <table class="deduction-tree">
     <tr>
