@@ -89,6 +89,24 @@ The root value $$u$$ is usually the output of a resolver. Since resolver impleme
     </td></tr>
 </table>
 
+**E-APP-ERR**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$\rho_m \in \Sigma_{\rho}$$ and $$\rho_{m}(u, x:v) = \bot$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash m(x: v).t \to m_{(x: v)}. \mathbf{err} $$
+    </td></tr>
+</table>
+
+An error is raised if the resolver fails to compute. E.g. provided arguments are not what it expects or internal errors.
+
 **E-APP**
 
 <table class="deduction-tree">
