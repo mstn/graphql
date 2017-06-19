@@ -53,6 +53,24 @@ Note that for $$ \bot, 0 \vdash [\cdot] $$ we can apply the hole rule or the nul
 
 Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash [\cdot] \to v $$.
 
+**E-HOLE-ERR**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+        not $$ u: \Sigma_T $$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash [\cdot] \to \mathbf{err} $$
+    </td></tr>
+</table>
+
+The root value $$u$$ is usually the output of a resolver. Since resolver implementation is an internal detail, we do not know what $$u$$ looks like until we use it. In practice, this means that the run time type of $$u$$ could not be what we expected and, if it does not match the schema, we raise an error.
+
 ### Fields
 
 **E-NO-RES**

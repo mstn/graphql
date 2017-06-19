@@ -51,6 +51,7 @@ t &=& 0                                     \\
   & & \mathbf{s}                             \\
   & & \mathbf{true}                           \\
   & & \mathbf{false} \\
+  & & \mathbf{err} \\
   & & [ \cdot ]  \\
   & & m( x: v \ldots).t                      \\
   & & m_{( x: v \ldots)}.t                      \\
@@ -71,6 +72,7 @@ v &=& 0                                     \\
   & & \mathbf{s}   \\
   & & \mathbf{true}     \\
   & & \mathbf{false} \\
+  & & \mathbf{err} \\
   & & m_{( x: v \ldots)}.v                      \\
   & & v,v \\
   & & \mathit{inl} \, v \\

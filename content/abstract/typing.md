@@ -17,6 +17,21 @@
     </td></tr>
 </table>
 
+**T-ERR**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Gamma \vdash \mathbf{err}: \bot $$
+    </td></tr>
+</table>
+
 **T-HOLE**
 
 <table class="deduction-tree">
@@ -103,7 +118,7 @@ Similar for strings, booleans and other scalars.
 <table class="deduction-tree">
     <tr>
         <td>
-        $$t \downarrow \Sigma_T$$ and $$\Gamma \vdash v: \Sigma_T$$
+        $$t \downarrow \Sigma_T$$  &nbsp;&nbsp;&nbsp; $$\Gamma \vdash t: T$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -121,7 +136,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
 <table class="deduction-tree">
     <tr>
         <td>
-        $$\Gamma \vdash t_1: T_1$$ and $$\Gamma \vdash t_2: T_2$$
+        $$\Gamma \vdash t_1: T_1$$ &nbsp;&nbsp;&nbsp; $$\Gamma \vdash t_2: T_2$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
@@ -137,7 +152,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
 <table class="deduction-tree">
     <tr>
         <td>
-        $$t \downarrow T$$
+        $$t \downarrow T$$ &nbsp;&nbsp;&nbsp; $$\Gamma \vdash t: T'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
