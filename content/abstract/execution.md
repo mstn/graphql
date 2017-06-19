@@ -8,6 +8,8 @@ The execution semantics boils down to the following operational rules.
 
 ### Empty schema
 
+**E-NULL**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -28,6 +30,8 @@ $$ \bot, u \vdash v$$ yields $$0$$. I do not like this rule because values are n
 Actually, GraphQL does not allow to create empty schemas.
 
 ### Hole
+
+**E-HOLE**
 
 <table class="deduction-tree">
     <tr>
@@ -51,7 +55,7 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 
 ### Fields
 
-**no result**
+**E-NO-RES**
 
 <table class="deduction-tree">
     <tr>
@@ -67,7 +71,7 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
     </td></tr>
 </table>
 
-**application**
+**E-APP**
 
 <table class="deduction-tree">
     <tr>
@@ -83,7 +87,7 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
     </td></tr>
 </table>
 
-**nesting**
+**E-NEST**
 
 <table class="deduction-tree">
     <tr>
@@ -103,6 +107,8 @@ Finally, since $$v \leq \top$$ for every value $$v$$, we have $$ \top, v \vdash 
 
 Fragments yield new evaluation contexts. Basically, they behave as ascriptions (i.e. upcasting and "safe" downcasting).
 
+**E-FRAG-1**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -119,6 +125,8 @@ Fragments yield new evaluation contexts. Basically, they behave as ascriptions (
 
 For (disjoint) unions, we distinguish several cases: if the root has type union, then the new context will be a "projection" of the union value to one of its constituents. Otherwise, if the type condition is a union, the root value is "injected" into a union value.
 
+**E-FRAG-2**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -132,6 +140,9 @@ For (disjoint) unions, we distinguish several cases: if the root has type union,
       $$ \Sigma, u \vdash \langle T \rangle.t \to  T, v \triangleright t$$
     </td></tr>
 </table>
+
+**E-FRAG-2**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -145,6 +156,9 @@ For (disjoint) unions, we distinguish several cases: if the root has type union,
       $$ \Sigma, u \vdash \langle T \rangle.t \to  T, v \triangleright t$$
     </td></tr>
 </table>
+
+**E-FRAG-3**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -158,6 +172,9 @@ For (disjoint) unions, we distinguish several cases: if the root has type union,
       $$ \Sigma, u \vdash \langle T+U \rangle.t \to  T+U,  \mathit{inl} \, u \triangleright t$$
     </td></tr>
 </table>
+
+**E-FRAG-4**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -173,6 +190,8 @@ For (disjoint) unions, we distinguish several cases: if the root has type union,
 </table>
 
 The following is a catch-all rule whose premise is the negation of the union of the previous conditions.
+
+**E-FRAG-ALL**
 
 <table class="deduction-tree">
     <tr>
@@ -192,7 +211,7 @@ The following is a catch-all rule whose premise is the negation of the union of 
 
 If we apply a context to a value, we can skip the value. In other words, we ignore the result of a query and we decide to return our favorite term, stubbornly.
 
-**skip**
+**E-SKIP**
 
 <table class="deduction-tree">
     <tr>
@@ -209,7 +228,7 @@ If we apply a context to a value, we can skip the value. In other words, we igno
 
 Otherwise, if the term is not a value, we evaluate the term in a new context.
 
-**new context**
+**E-CTX**
 
 <table class="deduction-tree">
     <tr>
@@ -229,7 +248,7 @@ Do we really need context? We could rub it out. For example, we could add the ev
 
 ### Sets
 
-**set**
+**E-PAR-1**
 
 <table class="deduction-tree">
     <tr>
@@ -244,6 +263,8 @@ Do we really need context? We could rub it out. For example, we could add the ev
       $$ \Sigma, u \vdash t_1,t_2 \to  t_{1}',t_2$$
     </td></tr>
 </table>
+
+**E-PAR-2**
 
 <table class="deduction-tree">
     <tr>
@@ -263,6 +284,8 @@ Do we really need context? We could rub it out. For example, we could add the ev
 
 The usual suspects.
 
+**E-SUM-1**
+
 <table class="deduction-tree">
     <tr>
         <td>
@@ -276,6 +299,9 @@ The usual suspects.
       $$ T+U, \mathit{inl}\,v \vdash \mathit{inl}\,t \to  \mathit{inl}\,t'$$
     </td></tr>
 </table>
+
+**E-PAR-2**
+
 <table class="deduction-tree">
     <tr>
         <td>
