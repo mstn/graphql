@@ -234,14 +234,28 @@ Do we really need context? We could rub it out. For example, we could add the ev
 <table class="deduction-tree">
     <tr>
         <td>
-          $$\Sigma, u \vdash t_j \to t'_j$$
+          $$\Sigma, u \vdash t_1 \to t_{1}'$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ \Sigma, u \vdash (t^{i=1 \ldots j-1}t_jt^{k=j+1 \ldots n}) \to  (t^{i=1 \ldots j-1}t'_{j}t^{k=j+1 \ldots n})$$
+      $$ \Sigma, u \vdash t_1,t_2 \to  t_{1}',t_2$$
+    </td></tr>
+</table>
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+          $$\Sigma, u \vdash t_2 \to t_{2}'$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ \Sigma, u \vdash t_1,t_2 \to  t_{1},t_{2}'$$
     </td></tr>
 </table>
 

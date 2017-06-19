@@ -100,19 +100,19 @@ Similar for strings, booleans and other scalars.
 
 $$\downarrow$$ is read "matches" and it is defined in next section.
 
-**T-SET**
+**T-PAR**
 
 <table class="deduction-tree">
     <tr>
         <td>
-        $$\Gamma \vdash t_i: T_i$$ for $$i=1 \ldots n$$
+        $$\Gamma \vdash t_1: T_1$$ and $$\Gamma \vdash t_2: T_2$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$\Gamma \vdash  (t^{i=1 \ldots n}): (T^{i=1 \ldots n})$$
+      $$\Gamma \vdash  t_1, t_2 : T_1, T_2$$
     </td></tr>
 </table>
 
@@ -166,8 +166,6 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
 
 ## Subtyping rules
 
-### Standard rules
-
 **S-RFL**
 
 <table class="deduction-tree">
@@ -215,8 +213,6 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-### Bottom and Top
-
 **S-TOP**
 
 <table class="deduction-tree">
@@ -247,9 +243,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-### Sets
-
-**S-SINGLETON**
+**S-WIDTH**
 
 <table class="deduction-tree">
     <tr>
@@ -260,27 +254,40 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
         </td>
     </tr>
     <tr><td class="conc">
-      $$ (T) \leq T$$
+      $$ U,T \leq T$$
     </td></tr>
 </table>
 
-**S-SET**
+**S-PERM**
 
 <table class="deduction-tree">
     <tr>
         <td>
-         $$\forall i=1 \ldots m \exists ! j \in 1 \ldots n$$ such that $$T_{j} \leq U_i$$
         </td>
         <td class="rulename" rowspan="2">
           <div class="rulename"></div>
         </td>
     </tr>
     <tr><td class="conc">
-      $$ (T^{i=1 \ldots n}) \leq (U^{i=1 \ldots m}) $$
+      $$ U,T \leq T,U$$
     </td></tr>
 </table>
 
-### Fields
+**S-DEPTH**
+
+<table class="deduction-tree">
+    <tr>
+        <td>
+         $$T \leq T'$$ and $$U \leq U'$$
+        </td>
+        <td class="rulename" rowspan="2">
+          <div class="rulename"></div>
+        </td>
+    </tr>
+    <tr><td class="conc">
+      $$ T,U \leq T',U' $$
+    </td></tr>
+</table>
 
 **S-FLD**
 
@@ -297,8 +304,6 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
       $$ m( x: T_1 \ldots).T_2 \leq m( x: U_1 \ldots).U_2$$
     </td></tr>
 </table>
-
-### Union
 
 **S-SUM**
 

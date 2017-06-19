@@ -15,7 +15,7 @@ t &=& \bot                                     \\
   & & \mathit{Bool}                           \\
   & & \mathit{String}                           \\
   & & m( x: T \ldots).T                    \\
-  & & (T^{i=1 \ldots n}) \\
+  & & T,T \\
   & & T + T \\
   & & x
 \end{aligned}
@@ -36,6 +36,8 @@ $$T+T$$ is the sum type (aka disjoint union). I am assuming that GraphQL union i
 
 Hence, we model GraphQL union as a disjoint union following {{ "pierce02" | cite}} as usual. In passing, it would be interesting to implement a non disjoint union as a possible extension of the language.
 
+$$T,T$$ is a finite set of types. We use parenthesis to resolve ambiguities, e.g. $$\mathbf{m}.(T_1,T_2),T_3$$.
+
 Finally, $$x$$ is a type variable. As usual, typing rules will be defined in a context $$\Gamma$$ where variable names are resolved to a type.
 
 ## Terms and values
@@ -54,7 +56,7 @@ t &=& 0                                     \\
   & & m_{( x: v \ldots)}.t                      \\
   & & \langle T \rangle.t                    \\
   & & \Sigma, v \triangleright t                \\
-  & & (t^{i=1 \ldots n})                  \\
+  & & t,t                  \\
   & & \mathit{inl} \, t \\
   & & \mathit{inr} \, t \\
 \end{aligned}
@@ -70,7 +72,7 @@ v &=& 0                                     \\
   & & \mathbf{true}     \\
   & & \mathbf{false} \\
   & & m_{( x: v \ldots)}.v                      \\
-  & & (v^{i=1 \ldots n}) \\
+  & & v,v \\
   & & \mathit{inl} \, v \\
   & & \mathit{inr} \, v \\
 \end{aligned}
@@ -90,7 +92,7 @@ Inline fragments are denoted as $$\langle T \rangle.t$$. Roughly speaking, $$T$$
 
 Context $$\Sigma, v \triangleright t$$ is a term that propagates a new context through a term $$t$$. In other words, $$\Sigma, v$$ becomes the new context to use for the evaluation of term $$t$$.
 
-Finally, $$(t^{i=1 \ldots n})$$ are simply finite set of terms. In GraphQL terminology they correspond to selection sets.
+Finally, $$v,v$$ are simply finite set of terms. In GraphQL terminology they correspond to selection sets. As for types, we use parenthesis to resolve ambiguities, e.g. $$\mathbf{m}.(v_1,v_2),v_3$$.
 
 
 ### Example
