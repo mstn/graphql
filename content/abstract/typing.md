@@ -147,7 +147,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-**T-FRG-1**
+**T-FRG**
 
 <table class="deduction-tree">
     <tr>
@@ -163,7 +163,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-**T-FRG-2**
+**T-SUM-1**
 
 <table class="deduction-tree">
     <tr>
@@ -179,7 +179,7 @@ $$\downarrow$$ is read "matches" and it is defined in next section.
     </td></tr>
 </table>
 
-**T-FRG-3**
+**T-SUM-2**
 
 <table class="deduction-tree">
     <tr>
