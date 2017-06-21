@@ -125,7 +125,7 @@ Similar for strings, booleans and other scalars.
         </td>
     </tr>
     <tr><td class="conc">
-      $$\Gamma \vdash  \Sigma, v \triangleright t: \top$$
+      $$\Gamma \vdash  \Sigma, v \triangleright t: T$$
     </td></tr>
 </table>
 
