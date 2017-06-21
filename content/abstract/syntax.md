@@ -25,9 +25,11 @@ We include $$\bot$$ and $$\top$$ which are not present in the original spec. Int
 
 Scalar types are basic types such as integers, strings and so forth. In our examples, we will consider mainly $$\mathit{Nat}$$, $$\mathit{Bool}$$ and $$\mathit{String}$$.
 
-A field is $$m( x: T \ldots).T' $$. We assume that a function $$\rho_{m}$$ exists for each label name $$m$$ called the _resolve function_ for $$m$$. The signature of $$\rho_{m}$$ is $$v \times \Pi_{x:T} v_{T} \to v_{T'}$$ where $$v$$ is the set of values and $$v_T$$ is the set of values of type $$T$$.
+A field is $$m( x: T \ldots).T' $$. We assume that a function $$\rho_{m}$$ exists for each label name $$m$$ called the _resolve function_ for $$m$$. The signature of $$\rho_{m}$$ is $$v \times \Pi_{x:T} v_{T} \to v$$ where $$v$$ is the set of values and $$v_T$$ is the set of values of type $$T$$.
 
 Intuitively, the resolve function is the execution semantics of a query. GraphQL is independent from the underlying database. For this reason, we do not specify how $$\rho_{m}$$ is implemented. For scalar types, $$\rho_{m}$$ is often defined as a projection function $$\pi_{m}$$.
+
+In addition, the first input (i.e. root) and the output of a resolver are not constrained to match a pre-defined type. The reason is that the format of the result of a resolver is considered an internal detail and it is not controlled by the abstract language.
 
 $$T+T$$ is the sum type (aka disjoint union). I am assuming that GraphQL union is actually a disjoint union. As far I know, there is no claim about the kind of union, but there are some hints from the reference implementation.
 * Union type is required to provide _resolveType_ function or the two addends must define _isTypeOf_ function. This is a sort of "tag" on values.

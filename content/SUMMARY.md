@@ -12,6 +12,7 @@
   * [Execution](abstract/execution.md)
     * [A full example](abstract/full-example.md)
     * [Argument Evaluation](abstract/argument-eval.md)
+    * [Resolvers and types](abstract/resolvers-and-types.md)
     * [Limit cases](abstract/limit-examples.md)
   * [Safety](abstract/safety.md)
   * [Other properties](abstract/more.md)
