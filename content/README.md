@@ -11,11 +11,3 @@ The rest of this project is organized as follows.
 ## Part I - Abstract GraphQL
 
 As far I know, Facebook did not provide a formal specification of the language, execution semantics and type system. There is only a reference implementation {{ "graphql-ref-impl" | cite }} in Javascript and an informal spec document {{ "graphql-spec" | cite }}. In this section, we want to fill this gap.
-
-## Part II - Extensions
-
-(coming soon)
-
-## Part III - Comparisons
-
-(coming soon)
