@@ -24,11 +24,9 @@ My main reference is [Pierce2002], that is also recommended as background materi
 
 ### Current status
 
-* Sketched safety proof.
-* Fragments and disjoint unions.
-* Definition of an abstract syntax for GraphQL with a _small step_ semantics style following {{ "pierce02" | cite}}.
-* Tests for reverse engineering the semantics of the real GraphQL [here](https://github.com/mstn/graphql-playground).
-*  Syntax and semantics are not definitive and, currently, there are some flaws in my own definitions.
+* Working on safety proof
+* Reviewing fragments rules, in particular wrt context values
+* Started thinking about partial evaluation
 
 See [Changelog](content/CHANGELOG.md) to stay updated.
 
