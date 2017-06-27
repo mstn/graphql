@@ -2,6 +2,11 @@
 
 ### Next
 
+* ...
+
+### Release 0.2.0
+
+* *(Released Tue, 27 June 2017)*
 * Sketched safety proof.
 * Fragments and disjoint unions.
 * Definition of an abstract syntax for GraphQL with a _small step_ semantics style following {{ "pierce02" | cite}}.
