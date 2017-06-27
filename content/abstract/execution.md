@@ -141,6 +141,8 @@ An error is raised if the resolver fails to compute. E.g. provided arguments are
 
 ### Fragments
 
+> *Warning.* The following rules are not accurate. As we said, the root value $$u$$ is a simple internal representation. Hence, generally, we do not know from its syntax alone if $$u: T$$.
+
 Fragments yield new evaluation contexts. Basically, they behave as ascriptions (i.e. upcasting and "safe" downcasting).
 
 **E-FRAG-1**
